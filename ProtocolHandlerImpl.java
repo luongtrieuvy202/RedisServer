@@ -1,10 +1,15 @@
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.logging.Logger;
+
 
 public class ProtocolHandlerImpl implements ProtocolHandler {
+	private final Logger logger = Logger.getLogger(ProtocolHandlerImpl.class.getName());
+	
 	public static final String COMMAND_SEPARATOR = "\r\n";
 	public static final String END_COMMAND = ".";
+
 
 	public ProtocolHandlerImpl() {
 	}
@@ -19,6 +24,7 @@ public class ProtocolHandlerImpl implements ProtocolHandler {
 				Request request = RequestFactory.createRequest(requestBuilder.toString(),clientId);
 				Response response = handleEachRequest(request);
 				writeResponse(response,outputStream);
+				requestBuilder = new StringBuilder();
 			}
 		}
 	}

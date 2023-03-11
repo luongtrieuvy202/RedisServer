@@ -13,6 +13,7 @@ public class SetCommand implements RedisCommand {
 		mp = MapFactory.get(args.get(args.size() - 1));
 		String key = args.get(1);
 		String value = args.get(2);
+		System.out.println(value);
 		mp.put(key, value);
 		return "+OK\r\n";
 	}

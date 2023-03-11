@@ -16,7 +16,7 @@ public class GetCommand implements RedisCommand {
 		if (value == null) {
 			return "$-1\r\n";
 		} else {
-			return "$" + value.length() + "\r\n" + value + "\r\n";
+			return value + "\r\n";
 		}
 	}
 }
